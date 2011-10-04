@@ -1,0 +1,22 @@
+Name: xorg-x11-filesystem
+Summary: X.Org X11 filesystem layout
+Version: 7.3
+Release: 1
+Group: System/Base
+License: MIT
+URL: http://www.redhat.com
+Description: |
+    This package provides some directories which are required by other
+    packages which comprise the modularized X.Org X11R7 X Window System
+    release.  This package must be installed during OS installation
+    or upgrade, in order to force the creation of these directories,
+    and replace any legacy symbolic links that might be present in old
+    locations, which could result in upgrade failures.
+
+RequiresPre:
+    - filesystem >= 2.3.7-1
+Requires:
+    - filesystem
+BuildArch: noarch
+Configure: none
+Builder: none

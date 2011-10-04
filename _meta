@@ -1,0 +1,12 @@
+<package project="Mer:Trunk:Base" name="xorg-x11-filesystem">
+  <title>X.Org X11 filesystem layout</title>
+  <description>This package provides some directories which are required by other
+packages which comprise the modularized X.Org X11R7 X Window System
+release.  This package must be installed during OS installation
+or upgrade, in order to force the creation of these directories,
+and replace any legacy symbolic links that might be present in old
+locations, which could result in upgrade failures.
+
+</description>
+  <url>http://www.redhat.com</url>
+</package>

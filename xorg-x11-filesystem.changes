@@ -1,0 +1,46 @@
+* Fri Jul 30 2010 Liu Xinyun <xinyun.liu@intel.com> - 7.3-5
+- Change licence form MIT/X to MIT
+- Update to 7.3-5 and add to use spectacle 
+
+* Thu Feb 21 2008 Adam Jackson <ajax@redhat.com> 7.3-1
+- Own %%{_datadir}/X11. (#350651)
+- Superstition bump to 7.3.
+
+* Mon Jul 10 2006 Mike A. Harris <mharris@redhat.com> 7.1-2.fc6
+- Reword package description for (#189648)
+
+* Wed Jun 21 2006 Mike A. Harris <mharris@redhat.com> 7.1-1
+- Bumped version to 7.1-1 and rebuilt for X11R7.1.
+
+* Thu Feb 09 2006 Mike A. Harris <mharris@redhat.com> 7.0-1
+- Bumped version to 7.0-1 and rebuilt.
+
+* Tue Nov 22 2005 Mike A. Harris <mharris@redhat.com> 0.99.2-3
+- Ok, even though I _tested_ it, and it worked..  the previous build had a
+  broken post, preun, and postun script, due to copy and paste error.  Ugh.
+  Also, the script in /usr/bin was broken due to heredoc variable
+  interpolation, which I turned off this time so it is generated correctly.
+  I removed the post, preun, postun scripts as they are overkill anyway.
+  The bug in 0.99.2-2 might cause upgrade or uninstall of the package to
+  fail and require manual uninstallation with --noscripts.  Oops.  This
+  is what "rawhide" means boys and girls.
+- Added "Requires(pre): filesystem >= 2.3.7-1", to avoid problems with older
+  versions of it, and to allow packages that need this workaround to only
+  have to set a dependency on xorg-x11-filesystem instead of both packages.
+  
+* Mon Nov 21 2005 Mike A. Harris <mharris@redhat.com> 0.99.2-2
+- Updated scripts so that they create the directory even if the symlink was
+  not present, to ensure that the dir exists first and avoid theoretical
+  case in which, in a single transaction, xorg-x11-filesystem gets installed,
+  no symlink or dir is present causing the symlink test to fail, so no dir
+  gets created, then another package in the transaction set installs a
+  symlink, then a package tries to install a dir and fails.  This should
+  guarantee now that these two dirs are really really dirs, not symlinks
+  for sure for sure.
+
+* Mon Nov 21 2005 Mike A. Harris <mharris@redhat.com> 0.99.2-1
+- Initial build.
+- Package creates the directories /usr/lib/X11 and /usr/include/X11 and owns
+  them as properly flagged dirs in the file manifest.
+- Added identical pre/post/preun/postun scripts which test to see if any of
+  of each of /usr/include/X11 /usr/lib/X11 /usr/lib64/X11
